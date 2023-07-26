@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pizza Perfect per Paizano</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" />
+  <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+
+<body x-data="pizzaCart" style="background-image: url('images/Pizza_1.jpg'); background-size: cover;">
+
+  <main class="container text-center"
+    x-data="{Total:0, chickenPizza:0, mushroomPizza:0, totalpaymentAmount:0, checkoutMessage:'', show:false, displayError:''}">
+
+    <!-- Heading -->
+    <div class="heading">
+      <h1>Paizano's Perfect Pizza</h1>
+    </div>
+
+    <!-- Cart Buttons -->
+    <button x-on:click="hideCart=!hideCart" class="btn-style" x-show="open && cart.total.toFixed(2) > 0 && username && cartId">
+      Show cart
+    </button>
+
+    <label x-show="!username">username: </label>
+    <input x-model="name" placeholder="Enter username" class="form-control-sm" x-show="!username" />
+    <button class="btn-style" @click="(username=name), (login())" x-show="!username">Login</button>
+    <button style="text-align: right;" @click="logout()" class="btn-style" x-show="username && cartId">
+      Logout
+    </button>
+
+    <a href="history.html" class="btn btn-style btn-left" x-show="username && cartId">Display History</a>
+
+    <!-- User Info -->
+    <div x-show="username && cartId">
+      <div>
+        <span class="span">username:</span> <span class="span" x-text="username"></span>
+        <br>
+        <span class="span">Cart id: </span><span class="span" x-text="cartId"></span><br>
+      </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div class="cart" x-show="hideCart && cart.total.toFixed(2)> 0 && username && cartId">
+      <h3><b>Shopping Cart</b> </h3>
+      <div class="text-bg-danger p-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Flavour</th>
+              <th scope="col">Type</th>
+              <th scope="col">Size</th>
+              <th scope="col">Price</th>
+              <th scope="col">Add item to cart</th>
+              <th scope="col">QTY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Cart Items -->
+            <template x-for="pizza in cart.pizzas">
+              <tr>
+                <td x-text="pizza.flavour"></td>
+                <td x-text="pizza.type"></td>
+                <td x-text="pizza.size"></td>
+                <td x-text="pizza.price"></td>
+                <td><button class="btn-style" x-on:click="buyPizza(pizza)">+</button>
+                  <button class="btn-style" x-on:click="removePizza(pizza)">-</button>
+                </td>
+                <td x-text="pizza.qty"></td>
+              </tr>
+            </template>
+
+            <!-- Total and Checkout -->
+            <tr>
+              <td>Total</td>
+              <td><span x-text="cart.total.toFixed(2)"></span></td>
+              <td>
+                <button class="btn-style" x-show="!makePayment" x-on:click="makePayment=true">Checkout</button>
+              </td>
+            </tr>
+
+            <!-- Payment Section -->
+            <tr x-show="makePayment">
+              <td colspan="6">
+                <div>
+                  <!-- Checkout Messages -->
+                  <template x-if="checkOutMessage=='Enjoy your pizza' ">
+                    <div class="text-bg-secondary p-3">
+                      <p x-text="checkOutMessage" style="font-size:20px"></p>
+                      <span>Your Change is: R</span><span x-text="change.toFixed(2)"></span>
+                    </div>
+                  </template>
+
+                  <template x-if="checkOutMessage== 'Sorry, That is not enough money!'">
+                    <p class="alert alert-danger" x-text="checkOutMessage"></p>
+                  </template>
+                  <div>
+                    <label>Enter Amount</label>
+                    <input class="form-control-sm" type="number" placeholder="Enter Amount" x-model="Amount" />
+                    <button x-on:click="payment" class="btn-style">Pay</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Display Checkout Messages -->
+    <div>
+      <div>
+        <p x-text="checkoutMessage"></p>
+        <p x-text="displayError"></p>
+      </div>
+      
+      <!-- Payment Section -->
+      <div x-show="show">
+        <label>Enter Amount</label>
+        <input type="number" x-model="totalpaymentAmount">
+        <button class="btn-style" @click="if(totalpaymentAmount >= Total){
+          checkoutMessage ='Enjoy your pizzas';Total=0, counter=0, pepperoniPizza=0, chickenPizza=0, mushroomPizza=0, totalpaymentAmount=0
+        } else {
+          checkoutMessage='Sorry-that is not enough money!',
+          setTimeout(function(){checkoutMessage=''},3000)
+        }">Pay</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="index.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</body>
+
+</html>

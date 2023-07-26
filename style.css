@@ -1,0 +1,152 @@
+/* Global Styles */
+body {
+    background-image: url(images/Pizza_1.jpg); /* Background image for the body */
+    background-size: cover;
+    color: #D2691E; /* Text color for the body (darker orange) */
+    font-family: 'Bauhaus', cursive; /* Font family for the text */
+}
+
+/* Styles for .history-cart class */
+.history-cart {
+    color: yellow; /* Text color for elements with .history-cart class */
+}
+
+/* Styles for button hover effect */
+.btn-dark:hover {
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+
+/* Styles for .span class */
+.span {
+    color: #D2691E; /* Text color for elements with .span class (darker orange) */
+    font-weight: bold;
+    text-align: left; /* Text alignment for elements with .span class */
+}
+
+/* Media query for larger screens (min-width: 960px) */
+@media (min-width: 960px) {
+    /* Add any specific styles for larger screens if needed */
+}
+
+/* Styles for h1 heading */
+h1 {
+    text-align: left; /* Text alignment for h1 headings */
+    color: white; /* Text color for h1 headings */
+}
+
+/* Styles for .cart class */
+.cart {
+    background-color: yellow; /* Background color for elements with .cart class */
+    margin: 0.2em; /* Margin around elements with .cart class */
+    padding: 0.2em; /* Padding around elements with .cart class */
+}
+
+/* Styles for .contact_us class */
+.contact_us {
+    background-color: #f28482; /* Background color for elements with .contact_us class */
+    text-align: left; /* Text alignment for elements with .contact_us class */
+}
+
+/* Styles for .menu class */
+.menu {
+    display: inline-block; /* Display style for elements with .menu class */
+    border: 5px solid; /* Border style for elements with .menu class */
+    padding: 0.2em; /* Padding around elements with .menu class */
+    background-color: #D2691E; /* Background color for elements with .menu class (darker orange) */
+    border-radius: 15px; /* Border radius for elements with .menu class */
+    width: 15em; /* Width of elements with .menu class */
+    margin-top: 0.2em; /* Margin on the top for elements with .menu class */
+    margin-bottom: 0.2em; /* Margin on the bottom for elements with .menu class */
+    margin-left: 0.8em; /* Margin on the left for elements with .menu class */
+    margin-right: 0.2em; /* Margin on the right for elements with .menu class */
+}
+
+/* Styles for .btn-style class */
+.btn-style {
+    border-radius: 10px; /* Border radius for elements with .btn-style class */
+    background-color: #D2691E; /* Background color for elements with .btn-style class (darker orange) */
+    color: yellow; /* Text color for elements with .btn-style class */
+    border: 5px solid #b8574e; /* Border style for elements with .btn-style class */
+}
+
+/* Styles for .btn1lg class */
+.btn1lg {
+    border-radius: 100px; /* Border radius for elements with .btn1lg class */
+    background-color: rgb(233, 17, 17); /* Background color for elements with .btn1lg class */
+}
+
+/* Styles for .btn2lg class */
+.btn2lg {
+    text-align: end; /* Text alignment for elements with .btn2lg class */
+}
+
+/* Styles for .container text-center class */
+.container text-center {
+    text-align: left; /* Text alignment for elements with .container text-center class */
+}
+
+/* Styles for .heading class */
+.heading {
+    text-align: left; /* Text alignment for elements with .heading class */
+}
+
+/* Styles for .text-center class */
+.text-center {
+    background-color: #80786f; /* Background color for elements with .text-center class */
+    padding: 0.2em; /* Padding around elements with .text-center class */
+}
+
+/* Styles for .box class */
+.box {
+    background-color: #e67272; /* Background color for elements with .box class */
+    color: white; /* Text color for elements with .box class */
+    font-weight: bold; /* Font weight for elements with .box class */
+    text-align: left; /* Text alignment for elements with .box class */
+}
+
+/* Styles for .small-pizza class */
+.small-pizza {
+    background-color: #e2d2b0; /* Background color for elements with .small-pizza class */
+    margin: 0.2em; /* Margin around elements with .small-pizza class */
+    padding: 0.2em; /* Padding around elements with .small-pizza class */
+    border-radius: 2em; /* Border radius for elements with .small-pizza class */
+    flex: 1; /* Flex value for elements with .small-pizza class */
+}
+
+/* Styles for .medium-pizza class */
+.medium-pizza {
+    background-color: #e2d2b0; /* Background color for elements with .medium-pizza class */
+    margin: 0.2em; /* Margin around elements with .medium-pizza class */
+    padding: 0.2em; /* Padding around elements with .medium-pizza class */
+    border-radius: 2em; /* Border radius for elements with .medium-pizza class */
+}
+
+/* Styles for .large-pizza class */
+.large-pizza {
+    background-color: #e2d2b0; /* Background color for elements with .large-pizza class */
+    margin: 0.2em; /* Margin around elements with .large-pizza class */
+    padding: 0.2em; /* Padding around elements with .large-pizza class */
+    border-radius: 2em; /* Border radius for elements with .large-pizza class */
+}
+
+/* Keyframes for rotate animation */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Styles for .rotate-animation class */
+.rotate-animation {
+    /* Apply animation with rotate keyframes */
+    animation: rotate 5s linear infinite;
+    /* Style the text */
+    font-size: 5em;
+    text-align: left; /* Text alignment for elements with .rotate-animation class */
+}
